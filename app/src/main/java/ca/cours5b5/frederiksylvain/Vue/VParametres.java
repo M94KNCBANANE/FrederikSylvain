@@ -3,14 +3,20 @@ package ca.cours5b5.frederiksylvain.Vue;
 import android.content.Context;
 import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import ca.cours5b5.frederiksylvain.Activites.AMenuPrincipal;
 import ca.cours5b5.frederiksylvain.R;
 import ca.cours5b5.frederiksylvain.Global.GConstantes;
 
-public class VParametres extends ConstraintLayout{
+public class VParametres extends Vue{
 
+
+    static{
+        Log.d("atelier04", VParametres.class.getSimpleName() + "::static");
+    }
     public VParametres(Context context){
         super(context);
     }
@@ -24,8 +30,9 @@ public class VParametres extends ConstraintLayout{
     }
 
     @Override
-    protected void onFinishInflate(){
-        super.onFinishInflate();
+        protected void onFinishInflate(){
+
+            super.onFinishInflate();
 
         Spinner monSpinnerHauteur = this.findViewById(R.id.spinnerHauteur);
         ArrayAdapter<Integer> adapterHauteur = new ArrayAdapter<>(this.getContext(), R.layout.support_simple_spinner_dropdown_item);
@@ -52,5 +59,7 @@ public class VParametres extends ConstraintLayout{
             adapterGagner.add(i);
         }
         monSpinnerGagner.setSelection(adapterGagner.getPosition(GConstantes.POURGAGNERDEF));
+
+        Log.d("atelier04", VParametres.class.getSimpleName() + "::onFinishInflate");
     }
 }

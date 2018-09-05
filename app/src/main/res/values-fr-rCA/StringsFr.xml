@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="Bonjour">Bonjour!</string>
-    <string name="Hauteur">Height</string>
-    <string name="Largeur">Width</string>
-    <string name="PourGagner">To win</string>
+    <string name="Hauteur">Hauteur</string>
+    <string name="Largeur">Largeur</string>
+    <string name="PourGagner">Pour gagner</string>
+    <string name="Parametre">Paramètres</string>
 </resources>
