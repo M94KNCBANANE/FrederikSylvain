@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="Bonjour">Hello</string>
+    <string name="Hauteur">Hauteur</string>
+    <string name="Largeur">Largeur</string>
+    <string name="PourGagner">Pour gagner</string>
+</resources>
