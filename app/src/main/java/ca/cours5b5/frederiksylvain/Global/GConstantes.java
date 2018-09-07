@@ -11,4 +11,6 @@ public class GConstantes {
     public static int POURGAGNERMIN = 3;
     public static int POURGAGNERMAX = 4;
     public static int POURGAGNERDEF = 4;
+
+    public static char SEPARATEUR = '/';
 }
