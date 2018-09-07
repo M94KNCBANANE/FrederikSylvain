@@ -1,4 +1,8 @@
 <resources>
-    <string name="app_name">FrederikSylvain</string>
-    <string name="Bonjour">Bonjour</string>
+    <string name="app_name">Frederik Sylvain</string>
+    <string name="Bonjour">Hello</string>
+    <string name="Hauteur">Height</string>
+    <string name="Largeur">Width</string>
+    <string name="PourGagner">To win</string>
+    <string name="Parametre">Parameters</string>
 </resources>
