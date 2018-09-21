@@ -1,11 +1,13 @@
 package ca.cours5b5.frederiksylvain.Activites;
 
-import android.support.v4.media.session.PlaybackStateCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import java.util.Map;
+
+import ca.cours5b5.frederiksylvain.Modeles.MParametres;
 import ca.cours5b5.frederiksylvain.R;
+import ca.cours5b5.frederiksylvain.Serialisation.Jsonification;
 
 public class AParametres extends Activite {
 
@@ -13,6 +15,17 @@ public class AParametres extends Activite {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_parametres);
+        if(savedInstanceState !=null) {
+            restaurerParametres(savedInstanceState);
+        }
+        Log.d("atelier04", AParametres.class.getSimpleName() + "::onCreate");
+    }
+
+    private void restaurerParametres(Bundle savedInstanceState){
+       String json = savedInstanceState.getString("MParametres");
+       Map<String, Object> objetJson = Jsonification.enObjetJson(json);
+        MParametres.instance.aPartirObjetJson(objetJson);
+        Log.d("Atelier05", "Restauration :: " + json);
     }
 
     static{
@@ -34,7 +47,17 @@ public class AParametres extends Activite {
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         Log.d("atelier04", AParametres.class.getSimpleName() + "::onSaveInstanceState");
+        sauvegarderParametres(outState);
     }
+
+    private void sauvegarderParametres(Bundle outState){
+       Map<String, Object> objetJson = MParametres.instance.enObjetJson();
+       String json = Jsonification.enChaine(objetJson);
+       outState.putString("MParametres", json);
+       Log.d("Atelier05", "Sauvegarde :: " + json);
+
+    }
+
 
     protected void onDestroy(){
         super.onDestroy();
