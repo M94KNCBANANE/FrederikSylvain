@@ -1,26 +1,28 @@
 package ca.cours5b5.frederiksylvain.Modeles;
 
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import ca.cours5b5.frederiksylvain.Global.GConstantes;
-import ca.cours5b5.frederiksylvain.R;
 import ca.cours5b5.frederiksylvain.Serialisation.AttributSerialisable;
-import ca.cours5b5.frederiksylvain.Vue.VParametres;
 
 public class MParametres  extends Modele{
 
     @AttributSerialisable
     public Integer hauteur;
+    private final String __hauteur = "hauteur";
 
     @AttributSerialisable
     public Integer largeur;
+    private final String __largeur = "largeur";
 
     @AttributSerialisable
     public Integer pourGagner;
+    private final String __pourGagner = "pourGagner";
+
+    public static MParametres instance = new MParametres();
 
     private List<Integer> choixHauteur;
     private List<Integer> choixLargeur;
@@ -88,27 +90,29 @@ public class MParametres  extends Modele{
     return liste;
     }
 
-//    private void genererListeChoixHauteur(){
-//        choixHauteur.clear();
-//        for(int i=GConstantes.HAUTEURMIN;i<=GConstantes.HAUTEURMAX;i++){
-//            choixHauteur.add(i);
-//        }
-//
-//    }
-//
-//    private void genererListeChoixLargeur(){
-//        choixLargeur.clear();
-//        for(int i=GConstantes.LARGEURMIN;i<=GConstantes.LARGEURMAX;i++){
-//            choixLargeur.add(i);
-//        }
-//    }
-//
-//    private void genererListeChoixPourGagner(){
-//        choixPourGagner.clear();
-//        for(int i=GConstantes.POURGAGNERMIN;i<=GConstantes.POURGAGNERMAX;i++){
-//            choixHauteur.add(i);
-//        }
-//    }
+    @Override
+    public void aPartirObjetJson(Map<String, Object> objetJson) {
+        for(Map.Entry<String, Object> entry : objetJson.entrySet()){
+            if(entry.getKey().equals(__hauteur)){
+                hauteur = Integer.valueOf((String)entry.getValue());
+            }else if(entry.getKey().equals(__largeur)) {
+                largeur = Integer.valueOf((String) entry.getValue());
+            }else if(entry.getKey().equals(__pourGagner)){
+                pourGagner = Integer.valueOf((String)entry.getValue());
+            }
+        }
+    }
+
+    @Override
+    public Map<String, Object> enObjetJson() {
+        Map<String, Object> objetJson = new HashMap<>();
+
+        objetJson.put(__hauteur,hauteur.toString());
+        objetJson.put(__largeur,largeur.toString());
+        objetJson.put(__pourGagner,pourGagner.toString());
+
+        return objetJson;
+    }
 
 
 }
