@@ -43,6 +43,6 @@ public class AMenuPrincipal extends Activite {
 
     public void test(View view){
          Intent intention = new Intent(this, AParametres.class);
-    this.startActivity(intention);
+        this.startActivity(intention);
     }
 }

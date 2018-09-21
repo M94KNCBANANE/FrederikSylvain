@@ -55,7 +55,6 @@ public class VParametres extends Vue{
             }
         });
 
-
         Spinner monSpinnerLargeur = this.findViewById(R.id.spinnerLargeur);
         ArrayAdapter<Integer> adapterLargeur = new ArrayAdapter<>(this.getContext(), R.layout.support_simple_spinner_dropdown_item);
         monSpinnerLargeur.setAdapter(adapterLargeur);
