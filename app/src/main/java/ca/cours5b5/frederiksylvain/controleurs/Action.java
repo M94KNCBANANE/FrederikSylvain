@@ -18,7 +18,7 @@ public class Action {
 
     }
     public void executerDesQuePossible(){
-        Log.d("test", "Executer des que possible action");
+
     ControleurAction.executerDesQuePossible(this);
     }
     public Action cloner(){

@@ -5,11 +5,15 @@ import android.util.Log;
 
 import java.util.Map;
 
+import ca.cours5b5.frederiksylvain.Global.GCommande;
 import ca.cours5b5.frederiksylvain.Modeles.MParametres;
 import ca.cours5b5.frederiksylvain.R;
 import ca.cours5b5.frederiksylvain.Serialisation.Jsonification;
+import ca.cours5b5.frederiksylvain.controleurs.ControleurAction;
+import ca.cours5b5.frederiksylvain.controleurs.interfaces.Fournisseur;
+import ca.cours5b5.frederiksylvain.controleurs.interfaces.ListenerFournisseur;
 
-public class AParametres extends Activite {
+public class AParametres extends Activite implements Fournisseur {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

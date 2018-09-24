@@ -1,4 +1,7 @@
 package ca.cours5b5.frederiksylvain.Serialisation;
 
-public @interface AttributSerialisable {
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
+public @Retention(RetentionPolicy.RUNTIME) @interface AttributSerialisable {
 }

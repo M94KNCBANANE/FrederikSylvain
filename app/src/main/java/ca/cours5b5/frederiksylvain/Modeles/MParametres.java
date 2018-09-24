@@ -5,10 +5,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import ca.cours5b5.frederiksylvain.Global.GCommande;
 import ca.cours5b5.frederiksylvain.Global.GConstantes;
 import ca.cours5b5.frederiksylvain.Serialisation.AttributSerialisable;
+import ca.cours5b5.frederiksylvain.controleurs.ControleurAction;
+import ca.cours5b5.frederiksylvain.controleurs.interfaces.Fournisseur;
+import ca.cours5b5.frederiksylvain.controleurs.interfaces.ListenerFournisseur;
 
-public class MParametres  extends Modele{
+public class MParametres  extends Modele implements Fournisseur{
 
     @AttributSerialisable
     public Integer hauteur;
@@ -36,6 +40,31 @@ public class MParametres  extends Modele{
         choixLargeur = new ArrayList<Integer>();
         choixPourGagner = new ArrayList<Integer>();
         genererListesDeChoix();
+
+        ControleurAction.fournirAction(this, GCommande.CHOISIR_LARGEUR, new ListenerFournisseur() {
+            @Override
+            public void executer(Object... args) {
+                setLargeur((int) args[0]);
+                choixPourGagner = genererListeDeChoix(GConstantes.POURGAGNERMIN, (Math.max(hauteur,largeur) * 75/100));
+            }
+        });
+
+        ControleurAction.fournirAction(this, GCommande.CHOISIR_HAUTEUR, new ListenerFournisseur() {
+            @Override
+            public void executer(Object... args) {
+                setHauteur((int) args[0]);
+                choixPourGagner = genererListeDeChoix(GConstantes.POURGAGNERMIN, (Math.max(hauteur,largeur) * 75/100));
+            }
+        });
+
+        ControleurAction.fournirAction(this, GCommande.CHOISIR_POUR_GAGNER, new ListenerFournisseur() {
+            @Override
+            public void executer(Object... args) {
+
+               setPourGagner((int) args[0]);
+
+            }
+        });
 
     }
 
@@ -75,10 +104,14 @@ public class MParametres  extends Modele{
         this.pourGagner = pourGagner;
     }
 
+    public void setChoixPourGagner(List<Integer> choixPourGagner) {
+        this.choixPourGagner = choixPourGagner;
+    }
+
     private void genererListesDeChoix(){
         choixHauteur = genererListeDeChoix(GConstantes.HAUTEURMIN, GConstantes.HAUTEURMAX);
         choixLargeur = genererListeDeChoix(GConstantes.LARGEURMIN, GConstantes.LARGEURMAX);
-        choixPourGagner = genererListeDeChoix(GConstantes.POURGAGNERMIN, GConstantes.POURGAGNERMAX);
+        choixPourGagner = genererListeDeChoix(GConstantes.POURGAGNERMIN, (Math.max(hauteur,largeur) * 75/100));
 
     }
 
@@ -113,6 +146,7 @@ public class MParametres  extends Modele{
 
         return objetJson;
     }
+
 
 
 }
