@@ -15,6 +15,10 @@ import ca.cours5b5.frederiksylvain.controleurs.interfaces.ListenerFournisseur;
 public class MParametres  extends Modele implements Fournisseur{
 
     @AttributSerialisable
+    public MParametresPartie parametresPartie;
+    private String __parametrePartie = "parametresPartie";
+
+    @AttributSerialisable
     public Integer hauteur;
     private final String __hauteur = "hauteur";
 
@@ -31,6 +35,10 @@ public class MParametres  extends Modele implements Fournisseur{
     private List<Integer> choixHauteur;
     private List<Integer> choixLargeur;
     private List<Integer> choixPourGagner;
+
+    public MParametresPartie getParametresPartie() {
+        return parametresPartie;
+    }
 
     public MParametres(){
         pourGagner = GConstantes.POURGAGNERDEF;
