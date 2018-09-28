@@ -42,6 +42,7 @@ public class VGrille extends GridLayout{
 
     void creerGrille(int hauteur, int largeur){
 
+
     }
 
     private void initialiserColonnes(int largeur){

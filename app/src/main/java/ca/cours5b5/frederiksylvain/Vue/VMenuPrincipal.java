@@ -36,14 +36,21 @@ public class VMenuPrincipal extends Vue {
     protected void onFinishInflate() {
         super.onFinishInflate();
         Log.d("atelier04", VMenuPrincipal.class.getSimpleName() + "::onFinishInflate");
-        Log.d("test", "finishInflate");
         Button bouttonParametres =  this.findViewById(R.id.parametres);
         bouttonParametres.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("test", "Coucou");
                 Action actionParametres = ControleurAction.demanderAction(GCommande.OUVRIR_MENU_PARAMETRES);
                 actionParametres.executerDesQuePossible();
+            }
+        });
+
+        Button bouttonJouer=  this.findViewById(R.id.jouer);
+        bouttonJouer.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Action actionJouer = ControleurAction.demanderAction(GCommande.OUVRIR_JOUER);
+                actionJouer.executerDesQuePossible();
             }
         });
     }

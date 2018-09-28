@@ -18,6 +18,9 @@
         <activity android:name=".Activites.AParametres">
 
         </activity>
+        <activity android:name=".Activites.APartie">
+
+        </activity>
 
     </application>
 

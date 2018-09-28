@@ -5,4 +5,6 @@
     <string name="Largeur">Width</string>
     <string name="PourGagner">To win</string>
     <string name="Parametre">Parameters</string>
+    <string name="Jouer">Play</string>
+
 </resources>

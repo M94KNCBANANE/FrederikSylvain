@@ -21,9 +21,17 @@ public class AMenuPrincipal extends Activite implements Fournisseur {
         ControleurAction.fournirAction(this, GCommande.OUVRIR_MENU_PARAMETRES, new ListenerFournisseur() {
             @Override
             public void executer(Object[] args) {
-                test();
+                OuvrirParametre();
             }
         });
+
+        ControleurAction.fournirAction(this, GCommande.OUVRIR_JOUER, new ListenerFournisseur() {
+            @Override
+            public void executer(Object[] args) {
+                OuvrirPartie();
+            }
+        });
+
     }
 
     static{
@@ -52,8 +60,12 @@ public class AMenuPrincipal extends Activite implements Fournisseur {
         Log.d("atelier04", AMenuPrincipal.class.getSimpleName() + "::onDestroy");
     }
 
-    public void test(){
-         Intent intention = new Intent(this, AParametres.class);
+    public void OuvrirParametre(){
+        Intent intention = new Intent(this, AParametres.class);
+        this.startActivity(intention);
+    }
+    public void OuvrirPartie(){
+        Intent intention = new Intent(this, APartie.class);
         this.startActivity(intention);
     }
 }

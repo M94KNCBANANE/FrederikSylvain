@@ -60,7 +60,7 @@ public class VParametres extends Vue{
 
         adapterHauteur.addAll(MParametres.instance.getChoixHauteur());
 
-        monSpinnerHauteur.setSelection(adapterHauteur.getPosition(MParametres.instance.getHauteur()));
+        monSpinnerHauteur.setSelection(adapterHauteur.getPosition(MParametres.instance.getParametresPartie().getHauteur()));
         monSpinnerHauteur.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -81,7 +81,7 @@ public class VParametres extends Vue{
 
         adapterLargeur.addAll(MParametres.instance.getChoixLargeur());
 
-        monSpinnerLargeur.setSelection(adapterLargeur.getPosition(MParametres.instance.getLargeur()));
+        monSpinnerLargeur.setSelection(adapterLargeur.getPosition(MParametres.instance.getParametresPartie().getLargeur()));
         monSpinnerLargeur.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -101,7 +101,7 @@ public class VParametres extends Vue{
         adapterGagner = new ArrayAdapter<>(this.getContext(), R.layout.support_simple_spinner_dropdown_item);
         monSpinnerGagner.setAdapter(adapterGagner);
         adapterGagner.addAll(MParametres.instance.getChoixPourGagner());
-        monSpinnerGagner.setSelection(adapterGagner.getPosition(MParametres.instance.getPourGagner()));
+        monSpinnerGagner.setSelection(adapterGagner.getPosition(MParametres.instance.getParametresPartie().getPourGagner()));
         monSpinnerGagner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {

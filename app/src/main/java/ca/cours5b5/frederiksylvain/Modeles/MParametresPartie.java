@@ -1,7 +1,9 @@
 package ca.cours5b5.frederiksylvain.Modeles;
 
+import java.util.HashMap;
 import java.util.Map;
 
+import ca.cours5b5.frederiksylvain.Global.GConstantes;
 import ca.cours5b5.frederiksylvain.Serialisation.AttributSerialisable;
 
 public class MParametresPartie extends Modele{
@@ -11,7 +13,7 @@ public Integer hauteur;
 protected final String __hauteur = "hauteur";
 
 @AttributSerialisable
-public Integer largeur;
+public Integer  largeur ;
 protected final String __largeur = "largeur";
 
     public Integer getHauteur() {
@@ -39,40 +41,56 @@ protected final String __largeur = "largeur";
     }
 
     @AttributSerialisable
-public Integer pourGagner;
+public Integer pourGagner ;
 protected final String __pourGagner = "pourGagner";
 
 public static MParametresPartie aPartirMParametres(MParametres mParametres){
 
     MParametresPartie clone = new MParametresPartie();
-    clone.setHauteur(mParametres.getHauteur());
-    clone.setLargeur(mParametres.getLargeur());
-    clone.setPourGagner(mParametres.getPourGagner());
+    clone.setHauteur(mParametres.getParametresPartie().getHauteur());
+    clone.setLargeur(mParametres.getParametresPartie().getLargeur());
+    clone.setPourGagner(mParametres.getParametresPartie().getPourGagner());
 
     return clone;
 }
 
     public MParametresPartie cloner(){
         MParametresPartie clone = new MParametresPartie();
-        clone.setHauteur(this.getHauteur());
-        clone.setLargeur(this.getLargeur());
-        clone.setPourGagner(this.getPourGagner());
+        clone.setHauteur(hauteur);
+        clone.setLargeur(largeur);
+        clone.setPourGagner(pourGagner);
         return clone;
 
     }
 
-    public MParametresPartie(){
-
-    }
+        public MParametresPartie(){
+            hauteur = GConstantes.HAUTEURDEF;
+            largeur = GConstantes.LARGEURDEF;
+            pourGagner = GConstantes.POURGAGNERDEF;
+        }
 
 
     @Override
     public void aPartirObjetJson(Map<String, Object> objetJson) {
-
+        for(Map.Entry<String, Object> entry : objetJson.entrySet()){
+            if(entry.getKey().equals(__hauteur)){
+                hauteur = Integer.valueOf((String)entry.getValue());
+            }else if(entry.getKey().equals(__largeur)) {
+                largeur = Integer.valueOf((String) entry.getValue());
+            }else if(entry.getKey().equals(__pourGagner)){
+                pourGagner = Integer.valueOf((String)entry.getValue());
+            }
+        }
     }
 
     @Override
     public Map<String, Object> enObjetJson() {
-        return null;
+        Map<String, Object> objetJson = new HashMap<>();
+
+        objetJson.put(__hauteur,hauteur.toString());
+        objetJson.put(__largeur,largeur.toString());
+        objetJson.put(__pourGagner,pourGagner.toString());
+
+        return objetJson;
     }
 }
