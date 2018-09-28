@@ -32,7 +32,7 @@ public class VPartie extends Vue{
     }
 
     private void initialiser(){
-        grille.findViewById(R.id.grille);
+       grille = this.findViewById(R.id.grille);
 
     }
 
