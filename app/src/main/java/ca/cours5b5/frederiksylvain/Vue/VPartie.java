@@ -2,6 +2,7 @@ package ca.cours5b5.frederiksylvain.Vue;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 
 import ca.cours5b5.frederiksylvain.Modeles.MParametres;
 import ca.cours5b5.frederiksylvain.Modeles.MPartie;
@@ -27,6 +28,7 @@ public class VPartie extends Vue{
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
+        Log.d("Atelier06", "VPartie::OnFinishInflate");
         initialiser();
         observerPartie();
     }
@@ -39,14 +41,14 @@ public class VPartie extends Vue{
     private void observerPartie(){
 
         String nom = MPartie.class.getSimpleName();
-
+        Log.d("Atelier06", "VPartie::ObserverPartie");
         ControleurObservation.observerModele(nom, new ListenerObservateur() {
 
             @Override
             public void reagirNouveauModele(Modele modele) {
                 super.reagirNouveauModele(modele);
                 MPartie partie = (MPartie) modele;
-
+                Log.d("Atelier06", "VPartie::reagirNouveauModele");
                 initialiserGrille(partie);
             }
 

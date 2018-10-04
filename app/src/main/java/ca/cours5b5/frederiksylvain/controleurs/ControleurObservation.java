@@ -1,5 +1,7 @@
 package ca.cours5b5.frederiksylvain.controleurs;
 
+import android.util.Log;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,6 +21,7 @@ public class ControleurObservation {
     }
 
     public static void observerModele(String nomModele, final ListenerObservateur listenerObservateur){
+        Log.d("Atelier06", "ControleurObservation::observerModele");
         if(nomModele.equals("MParametres")) {
             observations.put(MParametres.instance, listenerObservateur);
             lancerObservationPremiereFois(MParametres.instance);

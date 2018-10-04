@@ -6,4 +6,6 @@
     <string name="PourGagner">Pour gagner</string>
     <string name="Parametre">Paramètres</string>
     <string name="Jouer">Jouer</string>
+    <string name="Joueur1">Joueur 1</string>
+    <string name="Joueur2">Joueur 2</string>
 </resources>
