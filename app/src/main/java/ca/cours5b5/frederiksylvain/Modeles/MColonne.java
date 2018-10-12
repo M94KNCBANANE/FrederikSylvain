@@ -14,15 +14,14 @@ public class MColonne extends Modele {
     public MColonne(){
 
         jetons = new ArrayList<>();
-        jetons.add(GCouleur.ROUGE);
-        jetons.add(GCouleur.JAUNE)
+
 
     }
 
     public List<GCouleur> getJetons(){ return jetons; }
 
     public void placerJeton(GCouleur couleur){
-    getJetons().
+    jetons.add(couleur);
 
     }
 
