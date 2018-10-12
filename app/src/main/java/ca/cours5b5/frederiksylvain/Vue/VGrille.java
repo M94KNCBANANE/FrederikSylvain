@@ -4,10 +4,17 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.View;
 import android.widget.GridLayout;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import ca.cours5b5.frederiksylvain.Global.GCommande;
+import ca.cours5b5.frederiksylvain.Global.GCouleur;
+import ca.cours5b5.frederiksylvain.Modeles.MGrille;
+import ca.cours5b5.frederiksylvain.controleurs.Action;
+import ca.cours5b5.frederiksylvain.controleurs.ControleurAction;
 
 public class VGrille extends GridLayout{
 
@@ -24,6 +31,7 @@ public class VGrille extends GridLayout{
     }
 
     private int nombreRangees;
+    private Action actionEntete;
 
     private class Colonne extends ArrayList<VCase>{
 
@@ -56,9 +64,16 @@ public class VGrille extends GridLayout{
     private void ajouterEnTetes(int largeur){
         for(int i=0;i<largeur;i++){
             VEntete entete = new VEntete(getContext(), i);
-
+            installerListenerEntete(entete, i);
             addView(entete, getMiseEnPageEntete(i));
         }
+        demanderActionEntete();
+    }
+
+    private void demanderActionEntete(){
+       actionEntete = ControleurAction.demanderAction(GCommande.JOUER_COUP_ICI);
+
+
     }
 
     private LayoutParams getMiseEnPageEntete(int colonne){
@@ -108,6 +123,26 @@ public class VGrille extends GridLayout{
 
 
         return mesParams;
+
+    }
+
+
+    private void installerListenerEntete(VEntete entete, final int colonne){
+        entete.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                 actionEntete.setArguments(colonne);
+                 actionEntete.executerDesQuePossible();
+
+            }
+        });
+    }
+
+    void afficherJetons(MGrille grille){
+
+    }
+
+    private void afficherJeton(int colonne, int rangee, GCouleur jeton){
 
     }
 

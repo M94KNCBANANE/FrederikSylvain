@@ -4,6 +4,8 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
 
+import ca.cours5b5.frederiksylvain.Global.GCouleur;
+import ca.cours5b5.frederiksylvain.Modeles.MGrille;
 import ca.cours5b5.frederiksylvain.Modeles.MParametres;
 import ca.cours5b5.frederiksylvain.Modeles.MPartie;
 import ca.cours5b5.frederiksylvain.Modeles.Modele;
@@ -54,7 +56,7 @@ public class VPartie extends Vue{
 
             @Override
             public void reagirChangementAuModele(Modele modele) {
-                afficherParametres((MPartie) modele);
+                miseAJourGrille((MPartie) modele);
             }
         });
 
@@ -73,7 +75,13 @@ public class VPartie extends Vue{
 
     }
 
+
     private void afficherParametres(MPartie partie){
 
     }
+
+    private void miseAJourGrille(MPartie partie){
+        grille.afficherJetons(partie.getGrille());
+    }
+
 }
