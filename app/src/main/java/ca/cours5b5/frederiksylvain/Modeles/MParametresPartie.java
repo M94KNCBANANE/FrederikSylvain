@@ -47,9 +47,7 @@ protected final String __pourGagner = "pourGagner";
 public static MParametresPartie aPartirMParametres(MParametres mParametres){
 
     MParametresPartie clone = new MParametresPartie();
-    clone.setHauteur(mParametres.getParametresPartie().getHauteur());
-    clone.setLargeur(mParametres.getParametresPartie().getLargeur());
-    clone.setPourGagner(mParametres.getParametresPartie().getPourGagner());
+    clone = mParametres.getParametresPartie().cloner();
 
     return clone;
 }

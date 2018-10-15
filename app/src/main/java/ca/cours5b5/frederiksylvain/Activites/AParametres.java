@@ -55,10 +55,10 @@ public class AParametres extends Activite implements Fournisseur {
     }
 
     private void sauvegarderParametres(Bundle outState){
-       Map<String, Object> objetJson = MParametres.instance.enObjetJson();
-       String json = Jsonification.enChaine(objetJson);
-       outState.putString("MParametres", json);
-       Log.d("Atelier05", "Sauvegarde :: " + json);
+        Map<String, Object> objetJson = MParametres.instance.enObjetJson();
+        String json = Jsonification.enChaine(objetJson);
+        outState.putString("MParametres", json);
+        Log.d("Atelier05", "Sauvegarde :: " + json);
 
     }
 

@@ -52,6 +52,7 @@ public class VPartie extends Vue{
                 MPartie partie = (MPartie) modele;
                 Log.d("Atelier06", "VPartie::reagirNouveauModele");
                 initialiserGrille(partie);
+                miseAJourGrille(partie);
             }
 
             @Override
