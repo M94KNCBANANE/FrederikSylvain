@@ -1,6 +1,7 @@
 package ca.cours5b5.frederiksylvain.controleurs.interfaces;
 
-import ca.cours5b5.frederiksylvain.Modeles.Modele;
+
+import ca.cours5b5.frederiksylvain.modeles.Modele;
 
 public abstract class ListenerObservateur {
 
@@ -9,4 +10,5 @@ public abstract class ListenerObservateur {
     }
 
     public abstract void reagirChangementAuModele(Modele modele);
+
 }

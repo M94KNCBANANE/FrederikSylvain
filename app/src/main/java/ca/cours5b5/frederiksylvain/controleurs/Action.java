@@ -1,6 +1,5 @@
 package ca.cours5b5.frederiksylvain.controleurs;
 
-import android.util.Log;
 
 import ca.cours5b5.frederiksylvain.controleurs.interfaces.Fournisseur;
 import ca.cours5b5.frederiksylvain.controleurs.interfaces.ListenerFournisseur;
@@ -13,22 +12,23 @@ public class Action {
 
     Object[] args;
 
-    public void setArguments(Object... arguments){
-        args = arguments;
-
+    public void setArguments(Object... args) {
+        this.args = args;
     }
+
     public void executerDesQuePossible(){
-
-    ControleurAction.executerDesQuePossible(this);
+        ControleurAction.executerDesQuePossible(this);
     }
-    public Action cloner(){
-        Action clone = new Action();
-        if(args != null) {
-            clone.setArguments(args.clone());
 
-        }
-        clone.fournisseur=fournisseur;
-        clone.listenerFournisseur=listenerFournisseur;
+    Action cloner(){
+
+        Action clone = new Action();
+
+        clone.fournisseur = fournisseur;
+        clone.listenerFournisseur = listenerFournisseur;
+
+        clone.args = (args == null) ? null : args.clone();
+
         return clone;
     }
 }
