@@ -6,13 +6,14 @@ import java.util.List;
 import java.util.Map;
 
 import ca.cours5b5.frederiksylvain.controleurs.interfaces.Fournisseur;
+import ca.cours5b5.frederiksylvain.donnees.Serveur;
 import ca.cours5b5.frederiksylvain.donnees.SourceDeDonnees;
 import ca.cours5b5.frederiksylvain.exceptions.ErreurModele;
 import ca.cours5b5.frederiksylvain.modeles.MParametres;
-import ca.cours5b5.frederiksylvain.modeles.MParametresPartie;
 import ca.cours5b5.frederiksylvain.modeles.MPartie;
 import ca.cours5b5.frederiksylvain.modeles.Modele;
 import ca.cours5b5.frederiksylvain.donnees.Disque;
+import ca.cours5b5.frederiksylvain.usagers.UsagerCourant;
 
 public final class ControleurModeles {
 
@@ -30,6 +31,7 @@ public final class ControleurModeles {
 
         listeDeSauvegardes = new ArrayList<>();
         listeDeSauvegardes.add(Disque.getInstance());
+        listeDeSauvegardes.add(Serveur.getInstance());
 
     }
 
@@ -116,6 +118,15 @@ public final class ControleurModeles {
             throw new ErreurModele("Modèle inconnu: " + nomModele);
 
         }
+    }
+
+    private static String getCheminSauvegarde(String nomModele){
+
+        String resultat;
+
+        resultat = nomModele + "/" + UsagerCourant.getId();
+
+        return resultat;
     }
 
     public static void detruireModele(String nomModele) {

@@ -2,14 +2,30 @@ package ca.cours5b5.frederiksylvain.activites;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+
+import com.firebase.ui.auth.AuthUI;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import ca.cours5b5.frederiksylvain.R;
 import ca.cours5b5.frederiksylvain.controleurs.ControleurAction;
 import ca.cours5b5.frederiksylvain.controleurs.interfaces.Fournisseur;
 import ca.cours5b5.frederiksylvain.controleurs.interfaces.ListenerFournisseur;
 import ca.cours5b5.frederiksylvain.global.GCommande;
+import ca.cours5b5.frederiksylvain.global.GConstantes;
 
 public class AMenuPrincipal extends Activite implements Fournisseur {
+
+    private static List<AuthUI.IdpConfig> fournisseursDeConnexion = new ArrayList<>();
+
+    static{
+
+        fournisseursDeConnexion.add(new AuthUI.IdpConfig.GoogleBuilder().build());
+        fournisseursDeConnexion.add(new AuthUI.IdpConfig.EmailBuilder().build());
+        fournisseursDeConnexion.add(new AuthUI.IdpConfig.PhoneBuilder().build());
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +41,8 @@ public class AMenuPrincipal extends Activite implements Fournisseur {
         fournirActionOuvrirMenuParametres();
 
         fournirActionDemarrerPartie();
+
+        fournirActionConnexion();
     }
 
     private void fournirActionOuvrirMenuParametres() {
@@ -67,6 +85,40 @@ public class AMenuPrincipal extends Activite implements Fournisseur {
         Intent intentionParametres = new Intent(this, APartie.class);
         startActivity(intentionParametres);
 
+    }
+
+    private void fournirActionConnexion() {
+
+        ControleurAction.fournirAction(this,
+                GCommande.CONNEXION,
+                new ListenerFournisseur() {
+                    @Override
+                    public void executer(Object... args) {
+
+                        effectuerConnexion();
+
+                    }
+                });
+    }
+
+    private void effectuerConnexion(){
+
+        Intent intentionConnexion = AuthUI.getInstance()
+                .createSignInIntentBuilder()
+                .setAvailableProviders(fournisseursDeConnexion).build();
+
+        this.startActivityForResult(intentionConnexion, GConstantes.CODE_CONNEXION_FIREBASE);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        if(requestCode == GConstantes.CODE_CONNEXION_FIREBASE){
+            if(resultCode == RESULT_OK){
+                Log.d("Atelier11", "onActivityResult: Reussi");
+            } else {
+                Log.d("Atelier11", "onActivityResult: Echoue");
+            }
+        }
     }
 
 }
