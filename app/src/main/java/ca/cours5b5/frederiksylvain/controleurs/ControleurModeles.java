@@ -16,6 +16,7 @@ import ca.cours5b5.frederiksylvain.donnees.ListenerChargement;
 import ca.cours5b5.frederiksylvain.donnees.Serveur;
 import ca.cours5b5.frederiksylvain.donnees.SourceDeDonnees;
 import ca.cours5b5.frederiksylvain.exceptions.ErreurModele;
+import ca.cours5b5.frederiksylvain.modeles.Identifiable;
 import ca.cours5b5.frederiksylvain.modeles.MParametres;
 import ca.cours5b5.frederiksylvain.modeles.MPartie;
 import ca.cours5b5.frederiksylvain.modeles.Modele;
@@ -182,9 +183,12 @@ public final class ControleurModeles {
     private static String getCheminSauvegarde(String nomModele){
 
         String resultat;
-
-        resultat = nomModele + "/" + UsagerCourant.getId();
-
+        Modele modele = modelesEnMemoire.get(nomModele)
+        if(modele != null && modele instanceof Identifiable){
+            resultat = nomModele + "/" + ((Identifiable) modele).getId();
+        }else {
+            resultat = nomModele + "/" + UsagerCourant.getId();
+        }
         return resultat;
     }
 

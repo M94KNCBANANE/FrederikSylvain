@@ -7,7 +7,9 @@ import ca.cours5b5.frederiksylvain.controleurs.ControleurModeles;
 import ca.cours5b5.frederiksylvain.donnees.Disque;
 import ca.cours5b5.frederiksylvain.donnees.SauvegardeTemporaire;
 import ca.cours5b5.frederiksylvain.donnees.Serveur;
+import ca.cours5b5.frederiksylvain.donnees.Transition;
 import ca.cours5b5.frederiksylvain.modeles.MParametres;
+import ca.cours5b5.frederiksylvain.modeles.MPartieReseau;
 
 
 public abstract class Activite extends AppCompatActivity {
@@ -24,10 +26,11 @@ public abstract class Activite extends AppCompatActivity {
     protected void initialiserControleurModeles(Bundle savedInstanceState) {
 
         ControleurModeles.setSequenceDeChargement(
+                new Transition(savedInstanceState),
                 new SauvegardeTemporaire(savedInstanceState),
                 Serveur.getInstance(),
                 Disque.getInstance());
-        
+
     }
 
     protected void initialiserApplication(){
