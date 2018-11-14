@@ -19,6 +19,7 @@ import ca.cours5b5.frederiksylvain.exceptions.ErreurModele;
 import ca.cours5b5.frederiksylvain.modeles.Identifiable;
 import ca.cours5b5.frederiksylvain.modeles.MParametres;
 import ca.cours5b5.frederiksylvain.modeles.MPartie;
+import ca.cours5b5.frederiksylvain.modeles.MPartieReseau;
 import ca.cours5b5.frederiksylvain.modeles.Modele;
 import ca.cours5b5.frederiksylvain.donnees.Disque;
 import ca.cours5b5.frederiksylvain.usagers.UsagerCourant;
@@ -173,8 +174,17 @@ public final class ControleurModeles {
 
                 }
             });
-        }else{
+        }else if(nomModele.equals(MPartieReseau.class.getSimpleName())) {
+            getModele(MParametres.class.getSimpleName(), new ListenerGetModele() {
+                @Override
+                public void reagirAuModele(Modele modele) {
+                    MParametres mParametres = (MParametres) modele;
+                    MPartieReseau mPartieReseau = new MPartieReseau(mParametres.getParametresPartie().cloner());
+                    listenerGetModele.reagirAuModele(mPartieReseau);
 
+                }
+            });
+        }else{
             throw new ErreurModele("Modèle inconnu: " + nomModele);
 
         }
@@ -183,7 +193,7 @@ public final class ControleurModeles {
     private static String getCheminSauvegarde(String nomModele){
 
         String resultat;
-        Modele modele = modelesEnMemoire.get(nomModele)
+        Modele modele = modelesEnMemoire.get(nomModele);
         if(modele != null && modele instanceof Identifiable){
             resultat = nomModele + "/" + ((Identifiable) modele).getId();
         }else {

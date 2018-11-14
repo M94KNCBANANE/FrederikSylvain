@@ -1,6 +1,7 @@
 package ca.cours5b5.frederiksylvain.activites;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import ca.cours5b5.frederiksylvain.R;
 import ca.cours5b5.frederiksylvain.controleurs.ControleurModeles;

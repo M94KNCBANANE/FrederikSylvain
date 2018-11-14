@@ -23,6 +23,7 @@ public class ProxyListe extends Proxy implements Fournisseur {
 
     public ProxyListe(String cheminServeur){
         super(cheminServeur);
+        setActionNouvelItem(GCommande.RECEVOIR_COUP_RESEAU);
 
     }
 
@@ -31,6 +32,7 @@ public class ProxyListe extends Proxy implements Fournisseur {
     }
 
     public void ajouterValeur(Object valeur){
+
 
     }
 
@@ -46,11 +48,11 @@ public class ProxyListe extends Proxy implements Fournisseur {
     }
 
     protected Query getRequete(){
-
+return null;
 
     }
 
-    @Override
+    //@Override
     public void deconnecterDuServeur(){
 
 

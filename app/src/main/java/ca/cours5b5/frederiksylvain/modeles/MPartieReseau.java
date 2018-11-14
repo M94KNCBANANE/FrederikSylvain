@@ -3,6 +3,7 @@ package ca.cours5b5.frederiksylvain.modeles;
 import java.util.Map;
 
 import ca.cours5b5.frederiksylvain.controleurs.ControleurAction;
+import ca.cours5b5.frederiksylvain.controleurs.ControleurPartieReseau;
 import ca.cours5b5.frederiksylvain.controleurs.interfaces.Fournisseur;
 import ca.cours5b5.frederiksylvain.controleurs.interfaces.ListenerFournisseur;
 import ca.cours5b5.frederiksylvain.exceptions.ErreurAction;
@@ -37,9 +38,8 @@ public class MPartieReseau extends MPartie implements Fournisseur,Identifiable{
                     public void executer(Object... args) {
                         try{
 
-                            int colonne = (Integer) args[0];
+                            ControleurPartieReseau.getInstance().connecterAuServeur();
 
-                            jouerCoup(colonne);
 
 
                         }catch(ClassCastException e){
@@ -63,7 +63,7 @@ public class MPartieReseau extends MPartie implements Fournisseur,Identifiable{
                             int colonne = (Integer) args[0];
 
                             jouerCoup(colonne);
-
+                            ControleurPartieReseau.getInstance().transmettreCoup(colonne);
 
                         }catch(ClassCastException e){
 
@@ -72,8 +72,6 @@ public class MPartieReseau extends MPartie implements Fournisseur,Identifiable{
                         }
                     }
                 });
-
-
     }
 
     private void recevoirCoupReseau(int colonne){
@@ -87,6 +85,7 @@ public class MPartieReseau extends MPartie implements Fournisseur,Identifiable{
     public Map<String, Object> enObjetJson() throws ErreurSerialisation{
     super.enObjetJson();
 
+    return null;
     }
 
 

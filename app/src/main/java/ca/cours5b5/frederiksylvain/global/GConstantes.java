@@ -26,6 +26,6 @@ public final class GConstantes {
     public static final String CLE_COUPS_JOUEUR_HOTE = "coupsJoueurHote";
     public static final String CLE_COUPS_JOUEUR_INVITE = "coupsJoueurInvite";
 
-    public static final String FIXME_JSON_PARTIE_RESEAU = "{\"listeCoups\":[],\"parametres\":{\"largeur\":\"7\",\"pourGagner\":\"4\",\"hauteur\":\"6\"}, \"idJoueurInvite\":\"PHMRKe3q7zOhfQQOwemjtfBFNp12\", \"idJoueurHote\" : \"T1m8GxiBAlhLucF6Ne0GV06nnEg1 \"};";
+    public static final String FIXME_JSON_PARTIE_RESEAU = "{\"listeCoups\":[],\"parametres\":{\"largeur\":\"7\",\"pourGagner\":\"4\",\"hauteur\":\"6\"}, \"idJoueurInvite\":\"4HZJrbo9Qqa1Fes9keTjEkyrscp2\", \"idJoueurHote\" : \"N6F5wSkmbKO9Wn0kUpO8kkHDleX2 \"};";
 
 }

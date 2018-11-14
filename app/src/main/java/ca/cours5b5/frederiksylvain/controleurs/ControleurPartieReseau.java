@@ -1,5 +1,6 @@
 package ca.cours5b5.frederiksylvain.controleurs;
 
+import ca.cours5b5.frederiksylvain.modeles.MPartieReseau;
 import ca.cours5b5.frederiksylvain.proxy.ProxyListe;
 
 public class ControleurPartieReseau {
@@ -31,13 +32,14 @@ public class ControleurPartieReseau {
 
     }
     private String getCheminCoupsJoueurInvite(String idJoueurInvite){
+        return null;
 
     }
-    private String getCheminCoupsJoueurHot(String idJoueurHote){
-
+    private String getCheminCoupsJoueurHote(String idJoueurHote){
+    return null;
     }
     private String getCheminPartie(String idJoueurHote){
-
+    return null;
     }
     public void detruireSauvegardeServeur(){
 
