@@ -1,11 +1,14 @@
 package ca.cours5b5.frederiksylvain.modeles;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import ca.cours5b5.frederiksylvain.controleurs.ControleurAction;
+import ca.cours5b5.frederiksylvain.controleurs.ControleurPartie;
 import ca.cours5b5.frederiksylvain.controleurs.interfaces.Fournisseur;
 import ca.cours5b5.frederiksylvain.controleurs.interfaces.ListenerFournisseur;
 import ca.cours5b5.frederiksylvain.exceptions.ErreurAction;
@@ -38,6 +41,7 @@ public class MPartie extends Modele implements Fournisseur {
         initialiserGrille();
 
         fournirActionPlacerJeton();
+
 
     }
 
@@ -78,6 +82,7 @@ public class MPartie extends Modele implements Fournisseur {
                 });
     }
 
+
     protected void jouerCoup(int colonne) {
 
         if(siCoupLegal(colonne)){
@@ -86,7 +91,13 @@ public class MPartie extends Modele implements Fournisseur {
 
             grille.placerJeton(colonne, couleurCourante);
 
-            prochaineCouleurCourante();
+            if(grille.siCouleurGagne(couleurCourante, parametres.pourGagner)){
+
+                ControleurPartie.getInstance().gagnerPartie(couleurCourante);
+            }else {
+                prochaineCouleurCourante();
+            }
+
 
         }
     }
