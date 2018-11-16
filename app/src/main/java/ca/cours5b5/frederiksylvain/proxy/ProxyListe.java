@@ -1,12 +1,19 @@
 package ca.cours5b5.frederiksylvain.proxy;
 
+import android.provider.ContactsContract;
+
 import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import ca.cours5b5.frederiksylvain.controleurs.Action;
+import ca.cours5b5.frederiksylvain.controleurs.ControleurAction;
 import ca.cours5b5.frederiksylvain.controleurs.interfaces.Fournisseur;
 import ca.cours5b5.frederiksylvain.global.GCommande;
 import ca.cours5b5.frederiksylvain.global.GConstantes;
@@ -23,16 +30,18 @@ public class ProxyListe extends Proxy implements Fournisseur {
 
     public ProxyListe(String cheminServeur){
         super(cheminServeur);
-        setActionNouvelItem(GCommande.RECEVOIR_COUP_RESEAU);
+        noeudsAjoutes = new ArrayList<>();
 
     }
 
     public void setActionNouvelItem(GCommande commande){
-
+        actionNouvelItem = ControleurAction.demanderAction(commande);
     }
 
     public void ajouterValeur(Object valeur){
-
+    DatabaseReference test= super.noeudServeur.push();
+    test.setValue(valeur);
+    noeudsAjoutes.add(test);
 
     }
 
@@ -41,14 +50,43 @@ public class ProxyListe extends Proxy implements Fournisseur {
         super.connecterAuServeur();
         creerListener();
         requete= getRequete();
+        requete.addChildEventListener(childEventListener);
     }
 
     private void creerListener(){
+    childEventListener = new ChildEventListener() {
+        @Override
+        public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+            if(actionNouvelItem != null) {
+                actionNouvelItem.setArguments(dataSnapshot.getValue().toString());
+                actionNouvelItem.executerDesQuePossible();
+            }
+        }
 
+        @Override
+        public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+        }
+
+        @Override
+        public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+        }
+
+        @Override
+        public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+        }
+
+        @Override
+        public void onCancelled(DatabaseError databaseError) {
+
+        }
+    };
     }
 
     protected Query getRequete(){
-return null;
+        return super.noeudServeur.orderByKey().limitToFirst(GConstantes.NOMBRE_DE_VALEURS_A_CHARGER_DU_SERVEUR_PAR_DEFAULT);
 
     }
 
@@ -57,11 +95,17 @@ return null;
 
 
         super.deconnecterAuServeur();
+        requete.removeEventListener(childEventListener);
     }
+
 
 
     @Override
     public void detruireValeurs() {
 
+        for( DatabaseReference noeud : noeudsAjoutes){
+            noeud.removeValue();
+        }
     }
+
 }

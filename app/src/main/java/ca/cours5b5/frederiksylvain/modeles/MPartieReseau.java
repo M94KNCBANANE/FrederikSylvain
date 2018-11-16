@@ -1,5 +1,7 @@
 package ca.cours5b5.frederiksylvain.modeles;
 
+import android.util.Log;
+
 import java.util.Map;
 
 import ca.cours5b5.frederiksylvain.controleurs.ControleurAction;
@@ -19,10 +21,11 @@ public class MPartieReseau extends MPartie implements Fournisseur,Identifiable{
 
     @AttributSerialisable
     public String idJoueurHote;
-    public String get__idJoueurHote = "idJoueurHote";
+    public String __idJoueurHote = "idJoueurHote";
 
     public MPartieReseau(MParametresPartie parametres){
         super(parametres);
+        fournirActionRecevoirCoup();
     }
 
     @Override
@@ -37,8 +40,9 @@ public class MPartieReseau extends MPartie implements Fournisseur,Identifiable{
                     @Override
                     public void executer(Object... args) {
                         try{
+                                int colonne = Integer.parseInt( (String) args[0]);
+                                recevoirCoupReseau(colonne);
 
-                            ControleurPartieReseau.getInstance().connecterAuServeur();
 
 
 
@@ -75,17 +79,25 @@ public class MPartieReseau extends MPartie implements Fournisseur,Identifiable{
     }
 
     private void recevoirCoupReseau(int colonne){
-
+        jouerCoup(colonne);
     }
 
     public void aPartirObjetJson(Map<String, Object> objetJson) throws ErreurSerialisation{
-    super.aPartirObjetJson(objetJson);
+        super.aPartirObjetJson(objetJson);
+
+
+
+    idJoueurHote = (String) objetJson.get(__idJoueurHote);
+        idJoueurInvite = (String) objetJson.get(__idJoueurInvite);
+
     }
 
     public Map<String, Object> enObjetJson() throws ErreurSerialisation{
-    super.enObjetJson();
+        Map<String, Object> objetJson = super.enObjetJson();
 
-    return null;
+        objetJson.put(__idJoueurHote,idJoueurHote);
+        objetJson.put(__idJoueurInvite,idJoueurInvite);
+        return objetJson;
     }
 
 
