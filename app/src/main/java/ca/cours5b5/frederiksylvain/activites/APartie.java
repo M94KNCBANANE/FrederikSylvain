@@ -21,14 +21,6 @@ public class APartie extends Activite implements Fournisseur{
 
         setContentView(R.layout.activity_partie);
 
-        ControleurAction.fournirAction(this, GCommande.QUITTER, new ListenerFournisseur() {
-            @Override
-            public void executer(Object... args) {
-
-                APartie.this.finish();
-
-            }
-        });
 
     }
 
