@@ -19,7 +19,8 @@ public enum GCommande {
     RECEVOIR_COUP_RESEAU,
     AFFICHER_GAGNANT,
 
-    EFFACER_PARTIE
+    EFFACER_PARTIE,
+    QUITTER
 
 
 }
