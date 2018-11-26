@@ -6,12 +6,18 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.TextView;
 
+import android.util.AttributeSet;
+import android.util.Log;
+
+
 import ca.cours5b5.frederiksylvain.R;
 import ca.cours5b5.frederiksylvain.controleurs.ControleurObservation;
 import ca.cours5b5.frederiksylvain.controleurs.interfaces.ListenerObservateur;
 import ca.cours5b5.frederiksylvain.exceptions.ErreurObservation;
+
 import ca.cours5b5.frederiksylvain.global.GConstantes;
 import ca.cours5b5.frederiksylvain.global.GCouleur;
+
 import ca.cours5b5.frederiksylvain.modeles.MParametresPartie;
 import ca.cours5b5.frederiksylvain.modeles.MPartie;
 import ca.cours5b5.frederiksylvain.modeles.Modele;
@@ -20,8 +26,10 @@ import ca.cours5b5.frederiksylvain.modeles.Modele;
 public class VPartie extends Vue {
 
     private VGrille grille;
+
     private TextView textJoueur1;
     private TextView textJoueur2;
+
 
     public VPartie(Context context) {
         super(context);
@@ -41,8 +49,10 @@ public class VPartie extends Vue {
         super.onFinishInflate();
 
         initialiser();
+
         textJoueur1= findViewById(R.id.texte_joueur_un);
         textJoueur2 =findViewById(R.id.texte_joueur_deux);
+
 
         observerPartie();
 
@@ -119,6 +129,9 @@ public class VPartie extends Vue {
             textJoueur1.setBackgroundColor(Color.WHITE);
         }
     }
+
+
+
 
 
 

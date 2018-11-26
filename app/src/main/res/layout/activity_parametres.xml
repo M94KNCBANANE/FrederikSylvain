@@ -90,6 +90,7 @@
         app:layout_constraintStart_toStartOf="@+id/spinner_largeur"
         app:layout_constraintTop_toTopOf="@+id/texte_pour_gagner" />
 
+
     <Button
         android:id="@+id/bouton_reset"
         android:layout_width="wrap_content"
@@ -103,5 +104,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner_pour_gagner" />
-
+    
 </ca.cours5b5.frederiksylvain.vues.VParametres>

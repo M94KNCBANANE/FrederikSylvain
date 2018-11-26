@@ -1,10 +1,7 @@
 package ca.cours5b5.frederiksylvain.controleurs;
 
-import android.net.sip.SipSession;
-import android.util.Log;
-import android.view.Display;
 
-import org.w3c.dom.ls.LSException;
+
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -206,7 +203,7 @@ public final class ControleurModeles {
     public static void detruireModele(String nomModele) {
 
         Modele modele = modelesEnMemoire.get(nomModele);
-        Log.d("test", modele+"");
+
         if(modele != null){
 
             modelesEnMemoire.remove(nomModele);
@@ -219,11 +216,13 @@ public final class ControleurModeles {
 
             }
         }
+
         String cheminSauvegarde = getCheminSauvegarde(nomModele);
 
         for(SourceDeDonnees source : listeDeSauvegardes ) {
             source.detruireSauvegarde(cheminSauvegarde);
         }
+
     }
 
 

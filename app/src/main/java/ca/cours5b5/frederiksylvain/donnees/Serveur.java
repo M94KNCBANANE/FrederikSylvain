@@ -51,8 +51,10 @@ public class Serveur extends SourceDeDonnees {
             }
         });
     }
+
     public void detruireSauvegarde(String cheminSauvegarde) {
         DatabaseReference noeud = FirebaseDatabase.getInstance().getReference(cheminSauvegarde);
         noeud.removeValue();
     }
+
 }

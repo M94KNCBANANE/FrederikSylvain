@@ -27,12 +27,16 @@ public class VParametres extends Vue {
     private Spinner spinnerHauteur;
     private Spinner spinnerLargeur;
     private Spinner spinnerPourGagner;
+
     private Button boutonReset;
+
 
     private Action actionHauteur;
     private Action actionLargeur;
     private Action actionPourGagner;
+
     private Action actionEffacerPartie;
+
 
     public VParametres(Context context) {
         super(context);
@@ -65,7 +69,9 @@ public class VParametres extends Vue {
         spinnerHauteur = findViewById(R.id.spinner_hauteur);
         spinnerLargeur = findViewById(R.id.spinner_largeur);
         spinnerPourGagner = findViewById(R.id.spinner_pour_gagner);
+
         boutonReset = findViewById(R.id.bouton_reset);
+
 
         initialiserSpinner(spinnerHauteur);
         initialiserSpinner(spinnerLargeur);
@@ -78,7 +84,9 @@ public class VParametres extends Vue {
         actionHauteur = ControleurAction.demanderAction(GCommande.CHOISIR_HAUTEUR);
         actionLargeur = ControleurAction.demanderAction(GCommande.CHOISIR_LARGEUR);
         actionPourGagner = ControleurAction.demanderAction(GCommande.CHOISIR_POUR_GAGNER);
+
         actionEffacerPartie = ControleurAction.demanderAction(GCommande.EFFACER_PARTIE);
+
 
     }
 
@@ -95,7 +103,9 @@ public class VParametres extends Vue {
         installerListenerHauteur();
         installerListenerLargeur();
         installerListenerPourGagner();
+
         installerListenerReset();
+
 
     }
 
@@ -135,6 +145,7 @@ public class VParametres extends Vue {
             }
         });
     }
+
 
     private void installerListenerReset(){
 

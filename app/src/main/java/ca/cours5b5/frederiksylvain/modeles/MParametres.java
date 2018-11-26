@@ -1,6 +1,8 @@
 package ca.cours5b5.frederiksylvain.modeles;
 
+
 import android.util.Log;
+
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,7 +11,9 @@ import java.util.Map;
 
 
 import ca.cours5b5.frederiksylvain.controleurs.ControleurAction;
+
 import ca.cours5b5.frederiksylvain.controleurs.ControleurModeles;
+
 import ca.cours5b5.frederiksylvain.controleurs.interfaces.Fournisseur;
 import ca.cours5b5.frederiksylvain.controleurs.interfaces.ListenerFournisseur;
 import ca.cours5b5.frederiksylvain.exceptions.ErreurAction;
@@ -27,7 +31,9 @@ public class MParametres extends Modele implements Fournisseur {
     private List<Integer> choixHauteur;
     private List<Integer> choixLargeur;
     private List<Integer> choixPourGagner;
+
     private String[] modelesADetruire = {MPartieReseau.class.getSimpleName(), MPartie.class.getSimpleName(), MParametres.class.getSimpleName()};
+
 
     public MParametres() {
         super();
@@ -62,7 +68,9 @@ public class MParametres extends Modele implements Fournisseur {
         fournirActionHauteur();
         fournirActionLargeur();
         fournirActionPourGagner();
+
         fournirActionEffacerPartie();
+
     }
 
     private void fournirActionHauteur() {
@@ -133,6 +141,7 @@ public class MParametres extends Modele implements Fournisseur {
                 });
     }
 
+
     private void fournirActionEffacerPartie() {
 
         ControleurAction.fournirAction(this,
@@ -155,7 +164,6 @@ public class MParametres extends Modele implements Fournisseur {
                     }
                 });
     }
-
 
 
     private void genererListesDeChoix() {

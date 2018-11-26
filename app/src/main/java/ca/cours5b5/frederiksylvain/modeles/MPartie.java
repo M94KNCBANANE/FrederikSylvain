@@ -3,6 +3,7 @@ package ca.cours5b5.frederiksylvain.modeles;
 import android.util.Log;
 import android.widget.TextView;
 
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,7 +18,9 @@ import ca.cours5b5.frederiksylvain.exceptions.ErreurSerialisation;
 import ca.cours5b5.frederiksylvain.global.GCommande;
 import ca.cours5b5.frederiksylvain.global.GCouleur;
 import ca.cours5b5.frederiksylvain.serialisation.AttributSerialisable;
+
 import ca.cours5b5.frederiksylvain.vues.VPartie;
+
 
 public class MPartie extends Modele implements Fournisseur {
 
@@ -31,6 +34,7 @@ public class MPartie extends Modele implements Fournisseur {
 
     private MGrille grille;
     private GCouleur couleurCourante;
+
 
     public GCouleur getCouleurCourante() {
         return couleurCourante;
