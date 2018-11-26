@@ -50,10 +50,6 @@ public class VPartie extends Vue {
 
         initialiser();
 
-        textJoueur1= findViewById(R.id.texte_joueur_un);
-        textJoueur2 =findViewById(R.id.texte_joueur_deux);
-
-
         observerPartie();
 
     }
@@ -61,6 +57,10 @@ public class VPartie extends Vue {
     private void initialiser() {
 
         grille = findViewById(R.id.grille);
+        textJoueur1= findViewById(R.id.texte_joueur_un);
+        textJoueur2 =findViewById(R.id.texte_joueur_deux);
+
+
 
     }
 
@@ -119,13 +119,14 @@ public class VPartie extends Vue {
         setCouleurJoueur(partie.getCouleurCourante());
 
     }
+
     public void setCouleurJoueur(GCouleur couleurCourante) {
 
-        if(couleurCourante == null || couleurCourante == GCouleur.ROUGE) {
-            textJoueur1.setBackgroundColor(grille.getResources().getColor(R.color.ROUGE, null));
+        if(couleurCourante == GCouleur.ROUGE) {
+            textJoueur1.setBackgroundColor(Color.RED);
             textJoueur2.setBackgroundColor(Color.WHITE);
         } else if(couleurCourante == GCouleur.JAUNE) {
-            textJoueur2.setBackgroundColor(grille.getResources().getColor(R.color.JAUNE, null));
+            textJoueur2.setBackgroundColor(Color.YELLOW);
             textJoueur1.setBackgroundColor(Color.WHITE);
         }
     }

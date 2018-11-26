@@ -17,8 +17,7 @@
     <string name="joueur1">player1</string>
     <string name="joueur2">player2</string>
 
-<<<<<<< HEAD
+
     <string name="reset">Reset current game</string>
-=======
->>>>>>> d3360bffd5c8b48213eb1de036fd024ae18df4eb
+
 </resources>

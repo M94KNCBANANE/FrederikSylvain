@@ -21,8 +21,7 @@
     <string name="joueur1">joueur1</string>
     <string name="joueur2">joueur2</string>
 
-<<<<<<< HEAD
+
     <string name="reset">Effacer partie courante</string>
-=======
->>>>>>> d3360bffd5c8b48213eb1de036fd024ae18df4eb
+
 </resources>
